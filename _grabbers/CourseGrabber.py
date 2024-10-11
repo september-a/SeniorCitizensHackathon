@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup as bs
 from extensions import db
 from models.courseListings import CourseListings
 
-def populateDBCall(passed_str, department, id_num):
+def populateDBCall(passed_str, department, id_ßßßnum):
 
     assignList = []
     temp = ''
@@ -20,7 +20,7 @@ def populateDBCall(passed_str, department, id_num):
 
                 while index + 1 < len(passed_str) and passed_str[index + 1] == ' ':
                     index += 1
-            # If the next character is not a space, append the temp value to assignList
+            # If the next character is not a space, append the temp value to assignListß
             # and reset temp for the next word
             elif index + 1 < len(passed_str) and passed_str[index + 1] != ' ':
                 assignList.append(temp)
@@ -103,7 +103,7 @@ def populateDBCall(passed_str, department, id_num):
     title = ' '.join(assignList)
     title_str = str(title)
 
-    course_entry = CourseListings(id = id_num, sectionType = sectionType, CRN = CRN, department = department, course=course, title=title_str, 
+    course_entry = CourseListings(sectionType = sectionType, CRN = CRN, department = department, course=course, title=title_str, 
                                   credit=credit, max_enrollment=max_enrollment, enrollment=enrollment, availability=availability, 
                                   wait_list=wait_list, days=days, start=start, end=end, building=building, room=room, instructor=instructor)
 
@@ -153,7 +153,7 @@ def scrape_schedule_information():
     # for i in range(min(3, len(semesterLinks))):
     i = 0
     k = 0
-    while i < 1:
+    while i < 2:
         
         #Fetch the list of all the departments and their links
         dptHtmlSoup = goDeeper(semesterLinks[i])
