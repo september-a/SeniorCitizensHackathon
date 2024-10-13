@@ -10,7 +10,7 @@ import os
 
 app = Flask(__name__)
 cwd = os.getcwd()
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + cwd + '/database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + cwd + '/sample_database.db'
 db.init_app(app)
 
 @app.route('/html/courses')
