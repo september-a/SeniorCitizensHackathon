@@ -25,6 +25,10 @@ You can now access database from a separate terminal with curl requests
 --- OR ---
 Use our basic HTML GUI to view the api repsonses!
 
+# Update Database Locally
+If your project requires an update to the database, use the update.py script.
+Using this script will require an [updated Chromedriver](https://googlechromelabs.github.io/chrome-for-testing/) installed on your local machine.
+
 # Endpoints
 /courses
 /colleges
