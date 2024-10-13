@@ -154,6 +154,5 @@ def getAllCourseListingsJSON():
                     for course_listing in course_listings]
     return jsonify(course_data)
 
-
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False, port = 5001)
