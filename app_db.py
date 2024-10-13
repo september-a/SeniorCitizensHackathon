@@ -1,19 +1,16 @@
 from flask import *
-from datetime import time
 from extensions import db
-import _grabbers.DeptGrabber as DeptGrabber
-import _grabbers.ProgramGrabber as ProgramGrabber
-import _grabbers.FacultyGrabber as FacultyGrabber
 from models.courses import Course
 from models.Colleges import Colleges
 from models.department import Department
 from models.courseListings import CourseListings
 from models.majors import Majors
 from models.faculty import Faculty
-from _grabbers.CourseGrabber import scrape_schedule_information
+import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+cwd = os.getcwd()
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + cwd + '/database.db'
 db.init_app(app)
 
 @app.route('/html/courses')
@@ -159,16 +156,4 @@ def getAllCourseListingsJSON():
 
 
 if __name__ == '__main__':
-    with app.app_context():
-        # Drop existing tables, create new ones, and populate data
-        db.drop_all()
-        db.create_all()
-        DeptGrabber.getCourses()
-        ProgramGrabber.getPrograms()
-        scrape_schedule_information()
-        FacultyGrabber.populateFaculty()
-       
-
-        
-    # Start Flask server after database preparation
     app.run(debug=True, use_reloader=False, port = 5001)
